@@ -1,0 +1,8 @@
+node_modules
+*.lock
+
+*.crt
+*.pem
+
+*.mp4
+*.woff

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "socket.io-client": "^2.0.3"
+  }
+}
