@@ -7,7 +7,7 @@ var videos = [
 ]
 
 jQuery(document).ready(function($) {
-	socket = io.connect('https://0.0.0.0');
+	socket = io.connect(window.location.origin);
 
 	function ResponsePlayVideo( video_id ) {
 		video = { 'mp4': videos[ video_id ] };
