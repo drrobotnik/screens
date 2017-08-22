@@ -6,17 +6,16 @@
 
     <script language="javascript" type="text/javascript" src="node_modules/socket.io-client/dist/socket.io.js"></script>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 
     
-    <script
-  src="assets/js/jquery-2.2.4.min.js"></script>
+    <script src="assets/js/jquery-2.2.4.min.js"></script>
 
   	<link rel="stylesheet" href="assets/css/app.css">
 
     <script language="javascript" type="text/javascript" src="assets/js/main.js"></script>
 </head>
-<body class="">
+<body class="loading">
 	<div class="intro">
 		<figure 
 			class="intro-video lazyload bg-video" 
@@ -24,16 +23,16 @@
 			width="1280" 
 			height="720" 
 			style="background-color: rgb( 237,233,230);" 
-			data-bg-video="{&quot;mp4&quot;:&quot;\/assets\/video\/video-1.mp4&quot;}">
+			data-bg-video="{&quot;mp4&quot;:&quot;\/assets\/video\/loop.mp4&quot;}">
 		</figure>
 	</div>
     <div class="t">
     	<div class="tc">
-    		<div class="container">
-    			<a href="#vid-1" class="btn btn-lg btn-primary">Video 1</a> &nbsp; 
-    			<a href="#vid-2" class="btn btn-lg btn-primary">Video 2</a> &nbsp; 
-    			<a href="#vid-3" class="btn btn-lg btn-primary">Video 3</a> &nbsp; 
-    		</div>
+            <div class="row video-controls">
+                <div class="col-xs-4"><a href="#vid-1" class="btn btn-lg btn-block btn-primary">Mountains</a></div>
+                <div class="col-xs-4"><a href="#vid-2" class="btn btn-lg btn-block btn-primary">Waterfalls</a></div>
+                <div class="col-xs-4"><a href="#vid-3" class="btn btn-lg btn-block btn-primary">Beaches</a></div>
+            </div>
     	</div>
     </div>
     <script language="javascript" type="text/javascript" src="assets/js/custom-video.js"></script>

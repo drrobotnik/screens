@@ -2,9 +2,11 @@ html, body { height: 100%; text-align: center; background-color: #f3f3eb; }
 
 .t { display: table; height: 100%; width: 100%; position: relative; }
 
-.t > .tc { display: table-cell; vertical-align: middle; }
+.t > .tc { display: table-cell; vertical-align: bottom; }
 
-.btn-primary { background-color: #ff5f41; border-color: #ff5f41; }
+.btn-primary { background-color: #175184; border-color: #10406b; max-width: 150px; display: inline-block; }
+
+
 
 .intro {
     background-position: center center;
@@ -45,3 +47,5 @@ html, body { height: 100%; text-align: center; background-color: #f3f3eb; }
     left: 50%;
     max-width: 1000%;
 }
+
+.row { padding-top: 30px; padding-bottom: 30px; }

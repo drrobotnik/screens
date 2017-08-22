@@ -3,10 +3,12 @@ var socket;
 var localUrl = 'files:///home/pi/screens/public';
 
 var videos = [
-	'/assets/video/video-1.mp4',
+	'/assets/video/mountains.mp4',
 	'/assets/video/video-2.mp4',
-	'/assets/video/video-3.mp4'
+	'/assets/video/beach.mp4'
 ];
+
+var videoState = 'home';
 
 jQuery(document).ready(function($) {
 	console.log(window.location);
@@ -20,12 +22,11 @@ jQuery(document).ready(function($) {
 		video = { 'mp4': videoUrl };
 		$('.bg-video').attr( 'data-bg-video', JSON.stringify(video) );
 		$('.bg-video').find('video').remove();
-		console.log( $('.bg-video').attr('data-bg-video') );
 		window.CustVid.initialize();
-		//console.log( videos[ video_id ] );
 	}
 
 	$('.btn').on('click', function() {
+		$('.video-controls').fadeOut();
 		var video_index = $(this).index( '.btn' );
 		socket.emit("PlayVideo", video_index );
 	});
