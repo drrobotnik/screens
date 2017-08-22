@@ -11,7 +11,7 @@ var videos = [
 var videoState = 'home';
 
 jQuery(document).ready(function($) {
-	console.log(window.location);
+	document.addEventListener('contextmenu', event => event.preventDefault());
 	socket = io.connect(window.location.origin);
 
 	function ResponsePlayVideo( video_id ) {
