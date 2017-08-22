@@ -1,4 +1,8 @@
-html, body { height: 100%; text-align: center; background-color: #f3f3eb; }
+html, body { height: 100%; text-align: center; background-color: #f3f3eb; overflow:hidden; }
+
+::-webkit-scrollbar { 
+    display: none; 
+}
 
 .t { display: table; height: 100%; width: 100%; position: relative; }
 
