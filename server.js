@@ -1,7 +1,24 @@
 var https = require('https'),
-	express = require('express'),
-	fs = require('fs');
+    express = require('express'),
+    fs = require('fs'),
+    sp = require('serialport'),
+    ipc = require('node-ipc');
 
+ipc.config.id = 'world';
+ipc.config.retry = 1500;
+ipc.config.rawBuffer = true;
+ipc.config.networkPort = 8000;
+ipc.config.networkHost = '10.0.0.6';
+
+console.log(ipc.config);
+
+ipc.serveNet('udp4', function() {
+    console.log('udp4 started......');
+    ipc.server.on('data', function(data, socket) {
+        playVideo( data.toString() );
+        // do stuff
+    });
+});
 
 var app = express(),
 serverPort = 443;
@@ -28,7 +45,6 @@ function newConnection( socket ) {
 
 	socket.on( 'PlayVideo', playVideo );
 
-
 }
 
 function playVideo( video_id ) {
@@ -36,3 +52,5 @@ function playVideo( video_id ) {
 	// this.emit( 'responsePlayVideo', video_id );
 	io.sockets.emit('responsePlayVideo', video_id);
 }
+
+ipc.server.start();
