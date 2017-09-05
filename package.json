@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "express": "^4.15.4",
+    "libnmap": "^0.4.5",
     "node-ipc": "^9.1.1",
     "socket.io": "^2.0.3"
   }

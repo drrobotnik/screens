@@ -1,6 +1,6 @@
 var socket;
 
-var localUrl = 'files:///home/pi/screens/public';
+var localUrl = 'https://0.0.0.0:1025';
 
 var videos = [
 	'/assets/video/mountains.mp4',
