@@ -13,12 +13,17 @@ var ifaces = os.networkInterfaces(),
     broadcastRange = networkHost.split('.'),
     opts = { ports: '80,443,1025,8000' },
     app = express(),
-    serverPort = 1025;
+    serverPort = 1025,
+    route = 'secondary.html';
 // 1. What is my IP. 102 is always secondary.
 // 2. Determine if there are other devices networked.
 // 3. If there are other devices not within 101 & 102, then set this device as secondary.
 
+
 broadcastRange.pop();
+
+var hostPrefix = broadcastRange.join('.');
+
 broadcastRange = broadcastRange.join('.') + '.1-255';
 opts.range = [ broadcastRange ];
 
@@ -33,21 +38,43 @@ scanner.scan(opts, function(err, report) {
 
 	for(var hostItem in host ) {
 	    var item = host[hostItem].address[0].item.addr;
-            //console.log(item);
             network.push(item);
 	}
     }
 
-    var index = network.indexOf(networkHost);
-    if(index > -1) {
-        network.splice(index,1);
+    var localIndex = network.indexOf(networkHost);
+    console.log('LOCAL INDEX');
+    console.log(localIndex);
+    if(localIndex > -1) {
+        network.splice(localIndex,1);
+    }
+
+    var secondaryIndex = network.indexOf(hostPrefix + '.102');
+
+    if(secondaryIndex > -1) {
+        network.splice(secondaryIndex,1);
+    }
+
+//console.log(networkHost);
+//    console.log( networkHost == hostPrefix + '.101' );
+//    console.log( network.length );
+//    console.log( networkHost == hostPrefix + '.102' );
+
+
+    if( ( networkHost == hostPrefix + '.101' && network.length ) || networkHost == hostPrefix + '.102' ) {
+        route = 'secondary.html';
+    }else{
+        route = 'index.html';
     }
 
     app.use(express.static(dir + '/public'));
 
 
     app.get('/', function(req,res) {
-            res.sendFile(path.join(__dirname+'/public/index.html'));
+        var sendFilePath = path.join(__dirname+'/public/secondary.html');
+        console.log('SEND FILE PATH');
+        console.log(sendFilePath);
+        res.sendFile(sendFilePath);
     });
 
     var options = {
