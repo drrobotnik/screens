@@ -1,16 +1,20 @@
 var https = require('https'),
     express = require('express'),
+    os = require('os'),
     fs = require('fs'),
     sp = require('serialport'),
     ipc = require('node-ipc');
 
+var ifaces = os.networkInterfaces();
+var dir = __dirname;
+// @TODO: making a big assumption that this entry exists.
+var networkHost = ifaces['enp2s0'][0].address;
+console.log(networkHost);
 ipc.config.id = 'world';
 ipc.config.retry = 1500;
 ipc.config.rawBuffer = true;
 ipc.config.networkPort = 8000;
-ipc.config.networkHost = '10.0.0.6';
-
-console.log(ipc.config);
+ipc.config.networkHost = networkHost;
 
 ipc.serveNet('udp4', function() {
     console.log('udp4 started......');
@@ -21,13 +25,13 @@ ipc.serveNet('udp4', function() {
 });
 
 var app = express(),
-serverPort = 443;
+serverPort = 1025;
 
-app.use(express.static('public'));
+app.use(express.static(dir + '/public'));
 
 var options = {
-	key: fs.readFileSync('./file.pem'),
-	cert: fs.readFileSync('./file.crt')
+	key: fs.readFileSync(dir + '/file.pem'),
+	cert: fs.readFileSync(dir + '/file.crt')
 };
 
 var server = https.createServer(options, app),
