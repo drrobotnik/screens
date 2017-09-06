@@ -1,11 +1,13 @@
 var socket;
 
-var localUrl = 'files:///home/pi/screens/public';
+var localUrl = 'https://0.0.0.0:1025';
 
 var videos = [
 	'/assets/video/mountains.mp4',
 	'/assets/video/video-2.mp4',
-	'/assets/video/beach.mp4'
+	'/assets/video/video-3.mp4',
+        '/assets/video/loop.mp4'
+
 ];
 
 var videoState = 'home';
@@ -18,6 +20,7 @@ jQuery(document).ready(function($) {
 		var videoUrl = videos[ video_id ];
 		if ( '/secondary.html' === window.location.pathname ) {
 			videoUrl = localUrl + videos[ video_id ];
+                        console.log(videoUrl);
 		}
 		video = { 'mp4': videoUrl };
 		$('.bg-video').attr( 'data-bg-video', JSON.stringify(video) );

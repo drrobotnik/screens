@@ -51,7 +51,7 @@ function CustomVideo() {}
 
 				video.autoplay = 'autoplay';
 				video.loop = 'loop';
-				video.muted = 'muted';
+//				video.muted = 'muted';
 				video.setAttribute('webkit-playsinline', 'webkit-playsinline');
 				video.setAttribute('playsinline', 'playsinline');
 

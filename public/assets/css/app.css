@@ -1,16 +1,19 @@
-html, body { height: 100%; text-align: center; background-color: #f3f3eb; overflow:hidden; }
+html, body { height: 100%; text-align: center; background-color: #fff; overflow:hidden; cursor: none; }
 
 ::-webkit-scrollbar { 
     display: none; 
 }
 
-.t { display: table; height: 100%; width: 100%; position: relative; }
+.t { display: table; height: 100%; width: 100%; position: relative; padding-left:30px; padding-right:30px; }
 
 .t > .tc { display: table-cell; vertical-align: bottom; }
 
-.btn-primary { background-color: #175184; border-color: #10406b; max-width: 150px; display: inline-block; }
+a.btn-primary,
+a.btn-primary:hover,
+a.btn-primary:focus,
+a.btn-primary:active { background-color: transparent !important; border-color: transparent !important; display: block; width: 100%; padding-bottom: 50%; text-shadow:none !important;}
 
-
+video {background-color: #fff !important;}
 
 .intro {
     background-position: center center;
@@ -52,4 +55,4 @@ html, body { height: 100%; text-align: center; background-color: #f3f3eb; overfl
     max-width: 1000%;
 }
 
-.row { padding-top: 30px; padding-bottom: 30px; }
+.row { padding:20px 30px;}
